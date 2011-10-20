@@ -1,15 +1,19 @@
 module TwitterUtil
   def with_twitter_client
-    with_twitter_config do |username, password, keywords|
-      yield TweetStream::Client.new(username, password), keywords
+    with_twitter_account do |username, password|
+      with_twitter_stream_config do |keywords|
+        yield TweetStream::Client.new(username, password), keywords
+      end
     end
   end
 
-  def with_twitter_config
-    twitalytics_config = YAML.load_file("#{Rails.root}/config/twitalytics.yml")
+  def with_twitter_account
+    cnfg = YAML.load_file("#{Rails.root}/config/twitter_account.yml")
+    yield cnfg['username'], cnfg['password']
+  end
+
+  def with_twitter_stream_config
     twitter_stream_config = YAML.load_file("#{Rails.root}/config/twitter_stream.yml")
-    yield twitalytics_config['account']['username'],
-          twitalytics_config['account']['password'],
-          twitter_stream_config['keywords']
+    yield twitter_stream_config['keywords']
   end
 end
