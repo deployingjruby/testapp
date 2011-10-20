@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitalytics</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/ui-lightness/jquery-ui.css" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Twitalytics</h1>
+
+<div id="tabs">
+  <ul>
+    <li><%= link_to "Company", company_path %></li>
+    <li><%= link_to "Customers", customers_path %></li>
+    <li><a href="#">Analysis</a></li>
+  </ul>
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
+
+
+</body>
+</html>
