@@ -2,11 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
+# START:sqlite
+if defined?(JRUBY_VERSION)
+  gem 'activerecord-jdbc-adapter', :require => false
+  gem 'jdbc-sqlite3', :require => false
+else
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
+# END:sqlite
 
 # Gems used only for assets and not required
 # in production environments by default.
