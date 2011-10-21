@@ -1,6 +1,8 @@
 <div>
-  <input type="text" size="80"/>
-  <button>Submit</button>
+  <%= form_tag(company_status_path, :method => :post) do %>
+      <%= text_field_tag :status_text, "", :placeholder => "What is the company up to?", :size => 80 %>
+      <%= submit_tag "Post" %>
+  <% end %>
 </div>
 <div>
   <table>

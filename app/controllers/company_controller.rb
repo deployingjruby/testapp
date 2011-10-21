@@ -9,4 +9,16 @@ class CompanyController < ApplicationController
     end
   end
 
+  def update
+    child = fork do
+      # We won't actually update because that requires an OAuth token.
+      # Twitter.update(params[:status_text])
+      sleep 10
+      puts "update posted successfuly"
+    end
+    Process.detach(child)
+    
+    flash[:notice] = "Status updated!"
+    redirect_to company_path
+  end
 end
