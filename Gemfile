@@ -24,6 +24,11 @@ gem "json"
 gem "tweetstream", "1.0.4"
 gem 'twitter', '~> 1.7.2'
 
+platform :jruby do
+  gem "get_back", "~> 0.0.1"
+  gem "jruby-openssl"
+end
+
 group :test do
   gem 'turn', :require => false
   gem 'rspec-rails'
