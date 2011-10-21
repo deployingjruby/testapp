@@ -20,19 +20,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem "json"
 gem "tweetstream", "1.0.4"
 gem 'twitter', '~> 1.7.2'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   gem 'turn', :require => false
