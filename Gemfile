@@ -24,10 +24,14 @@ gem "json"
 gem "tweetstream", "1.0.4"
 gem 'twitter', '~> 1.7.2'
 
+# START:get_back
 platform :jruby do
   gem "get_back"
+  # END:get_back
   gem "jruby-openssl"
+  # START:get_back
 end
+# END:get_back
 
 group :test do
   gem 'turn', :require => false
