@@ -1,5 +1,8 @@
 class CompanyController < ApplicationController
   include TwitterUtil
+  # START:extend_get_back_jojo
+  extend GetBack::JoJo
+  # END:extend_get_back_jojo
 
   def index
     with_twitter_account do |username|
@@ -9,16 +12,22 @@ class CompanyController < ApplicationController
     end
   end
 
+  # START:get_back_post_update
   def update
-    child = fork do
-      # We won't actually update because that requires an OAuth token.
-      # Twitter.update(params[:status_text])
-      sleep 10
-      puts "update posted successfuly"
-    end
-    Process.detach(child)
-    
+    post_update(params[:status_text])
     flash[:notice] = "Status updated!"
     redirect_to company_path
   end
+
+  private
+
+  def post_update(text)
+    # We won't actually update because that requires an OAuth token.
+    # Twitter.update(text)
+    sleep 10
+    puts "update posted successfuly"
+  end
+
+  get_back :post_update, :pool => 10
+  # END:get_back_post_update
 end
