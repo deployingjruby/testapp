@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # START:sqlite
 if defined?(JRUBY_VERSION)
@@ -42,9 +42,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'execjs'
-  gem 'therubyracer'
   gem 'selenium-client', :require => 'selenium/client'
   gem 'selenium-webdriver'
   gem 'headless'
-  gem 'minitest'
 end
