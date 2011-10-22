@@ -28,7 +28,9 @@ gem 'twitter', '~> 1.7.2'
 platform :jruby do
   gem "get_back"
   # END:get_back
+  # START:jruby_openssl
   gem "jruby-openssl"
+  # END:jruby_openssl
   # START:get_back
 end
 # END:get_back
