@@ -9,6 +9,7 @@ class CompanyController < ApplicationController
     end
   end
 
+  # START:fork
   def update
     child = fork do
       # We won't actually update because that requires an OAuth token.
@@ -21,4 +22,5 @@ class CompanyController < ApplicationController
     flash[:notice] = "Status updated!"
     redirect_to company_path
   end
+  # END:fork
 end
