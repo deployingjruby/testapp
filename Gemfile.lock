@@ -205,7 +205,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   execjs
-  get_back (~> 0.0.1)
+  get_back
   headless
   jdbc-sqlite3
   jquery-rails
