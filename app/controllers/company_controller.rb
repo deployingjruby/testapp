@@ -20,6 +20,8 @@ class CompanyController < ApplicationController
     redirect_to company_path
   end
 
+  private
+
   def post_update(text)
     # We won't actually update because that requires an OAuth token.
     # Twitter.update(text)
