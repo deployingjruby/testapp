@@ -1,6 +1,6 @@
+# START:extend_get_back_jojo
 class CompanyController < ApplicationController
   include TwitterUtil
-  # START:extend_get_back_jojo
   extend GetBack::JoJo
   # END:extend_get_back_jojo
 
