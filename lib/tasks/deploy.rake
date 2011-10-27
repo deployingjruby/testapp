@@ -31,6 +31,7 @@ Warbler::Task.new(:warble)
 namespace :deploy do
   desc "Package the application into a WAR file and deploy it"
   task :war => [:warble] do
+    # todo
     # END:deploy
     # START:prepare
     with_ssh do |ssh|
