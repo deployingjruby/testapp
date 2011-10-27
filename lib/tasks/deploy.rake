@@ -59,7 +59,7 @@ namespace :deploy do
     # END:migrate
 
     # START:depoy_tomcat
-    #prod_ssh("mv stage/twitalytics.war /var/lib/tomcat6/webapps/")
+    with_ssh {|ssh| ssh.exec! "mv deploy/twitalytics.war /var/lib/tomcat6/webapps/" }
     # END:deploy_tomcat
     # END:deploy
   end
