@@ -48,8 +48,10 @@ namespace :deploy do
       ssh.exec! "cd deploy; jar xf twitalytics.war"
       ssh.exec("source .rvm/scripts/rvm
                 cd deploy/WEB-INF
+                export GEM_PATH=~/deploy/WEB-INF/gems
+                export RAILS_ENV=production
                 bundle install
-                bundle exec rake db:migrate RAILS_ENV=production"
+                bundle exec rake db:migrate"
       ) do |ch, stream, data|
         print data
       end
