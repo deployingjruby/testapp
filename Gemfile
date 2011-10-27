@@ -32,3 +32,9 @@ group :test do
   gem 'headless'
   gem 'minitest'
 end
+
+# START:production
+group :production do
+  gem 'jdbc-postgres'
+end
+# END:production
