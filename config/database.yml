@@ -17,7 +17,7 @@ test: &test
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
-
+# START:production
 production:
   adapter: postgresql
   database: twitalytics
@@ -26,6 +26,6 @@ production:
   pool: 5
   timeout: 5000
   username: postgres
-
+# END:production
 cucumber:
   <<: *test
