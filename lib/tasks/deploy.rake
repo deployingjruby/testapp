@@ -1,10 +1,12 @@
-require 'bundler/setup'
-require 'net/ssh'
-require 'net/scp'
+# START:require
+require 'bundler'
+Bundler.require(:deploy)
+# END:require
 
+# START:helpers
 SSH_KEY = "#{ENV["GEM_HOME"]}/gems/vagrant-0.8.7/keys/vagrant"
 
-def prod_ssh
+def with_ssh
   Net::SSH.start("localhost", "vagrant", {
       :port => 2222, :keys => [SSH_KEY]
   }) do |ssh|
@@ -12,37 +14,44 @@ def prod_ssh
   end
 end
 
-def prod_scp(local_file, remote_file)
+def scp_upload(local_file, remote_file)
   Net::SCP.upload!("localhost", "vagrant", local_file, remote_file, {
       :ssh => {:port => 2222, :keys => [SSH_KEY]}
   }) do |ch, name, sent, total|
     print "\rCopying #{name}: #{sent}/#{total}"
-  end
-  print "\n"
+  end; print "\n"
 end
+# END:helpers
 
+# START:warbler_task
+Warbler::Task.new(:warble)
+# END:warbler_task
+
+#START:deploy
 namespace :deploy do
   desc "Package the application into a WAR file and deploy it"
-  task :war do
+  task :war => [:warble] do
+    # END:deploy
     # START:prepare
-    prod_ssh do |ssh|
+    with_ssh do |ssh|
       ssh.exec! "mkdir -p deploy/"
       ssh.exec! "rm -rf deploy/*"
     end
     # END:prepare
 
     # START:scp_war
-    prod_scp("twitalytics.war", "deploy/")
+    scp_upload("twitalytics.war", "deploy/")
     # END:scp_war
 
     # START:migrate
-    prod_ssh do |ssh|
+    with_ssh do |ssh|
       ssh.exec! "cd deploy; jar xf twitalytics.war"
       ssh.exec("source .rvm/scripts/rvm
                 cd deploy/WEB-INF
-                RAILS_ENV=production rake db:migrate"
+                bundle install
+                bundle exec rake db:migrate RAILS_ENV=production"
       ) do |ch, stream, data|
-        puts data
+        print data
       end
     end
     # END:migrate
@@ -50,5 +59,7 @@ namespace :deploy do
     # START:depoy_tomcat
     #prod_ssh("mv stage/twitalytics.war /var/lib/tomcat6/webapps/")
     # END:deploy_tomcat
+    # END:deploy
   end
 end
+# END:deploy
