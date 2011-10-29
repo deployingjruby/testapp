@@ -60,7 +60,10 @@ namespace :deploy do
     # END:migrate
 
     # START:deploy_tomcat
-    with_ssh {|ssh| ssh.exec! "mv deploy/twitalytics.war /var/lib/tomcat6/webapps/" }
+    with_ssh do |ssh|
+      ssh.exec! "mv deploy/twitalytics.war /var/lib/tomcat6/webapps/"
+      puts 'Deployment complete!'
+    end
     # END:deploy_tomcat
     # START:deploy
   end
