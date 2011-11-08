@@ -19,14 +19,12 @@ test: &test
   timeout: 5000
 # START:production
 production:
-  adapter: postgresql
-  database: postgres
-  host: localhost
-  port: 5432
-  pool: 5
-  timeout: 5000
-  username: vagrant
-  password: Passw0rd
+  adapter: mysql
+  host: ec2-0-0-0-0.compute-1.amazonaws.com
+  port: 3306
+  database: twitalytics
+  username: twitalytics
+  password: ********
 # END:production
 cucumber:
   <<: *test

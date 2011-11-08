@@ -49,7 +49,7 @@ end
 
 # START:production
 group :production do
-  gem 'jdbc-postgres'
+  gem 'jdbc-mysql'
 end
 # END:production
 
