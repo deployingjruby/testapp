@@ -3,10 +3,6 @@ require 'bundler'
 Bundler.require(:deploy)
 # END:require
 
-# START:warbler_task
-Warbler::Task.new(:warble)
-# END:warbler_task
-
 # START:with_ssh
 SSH_KEY = "#{ENV["GEM_HOME"]}/gems/vagrant-0.8.7/keys/vagrant"
 
@@ -28,6 +24,10 @@ def scp_upload(local_file, remote_file)
   end; print "\n"
 end
 # END:scp_upload
+
+# START:warbler_task
+Warbler::Task.new(:warble)
+# END:warbler_task
 
 #START:deploy
 namespace :deploy do
