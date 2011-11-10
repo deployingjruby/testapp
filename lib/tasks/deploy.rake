@@ -17,7 +17,7 @@ def with_ssh
     yield ssh
   end
 end
-# START:with_ssh
+# END:with_ssh
 
 # START:scp_upload
 def scp_upload(local_file, remote_file)
