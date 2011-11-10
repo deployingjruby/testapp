@@ -3,7 +3,11 @@ require 'bundler'
 Bundler.require(:deploy)
 # END:require
 
-# START:helpers
+# START:warbler_task
+Warbler::Task.new(:warble)
+# END:warbler_task
+
+# START:with_ssh
 SSH_KEY = "#{ENV["GEM_HOME"]}/gems/vagrant-0.8.7/keys/vagrant"
 
 def with_ssh
@@ -13,7 +17,9 @@ def with_ssh
     yield ssh
   end
 end
+# START:with_ssh
 
+# START:scp_upload
 def scp_upload(local_file, remote_file)
   Net::SCP.upload!("localhost", "vagrant", local_file, remote_file, {
       :ssh => {:port => 2222, :keys => [SSH_KEY]}
@@ -21,11 +27,7 @@ def scp_upload(local_file, remote_file)
     print "\rCopying #{name}: #{sent}/#{total}"
   end; print "\n"
 end
-# END:helpers
-
-# START:warbler_task
-Warbler::Task.new(:warble)
-# END:warbler_task
+# END:scp_upload
 
 #START:deploy
 namespace :deploy do
