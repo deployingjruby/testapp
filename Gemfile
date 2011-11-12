@@ -33,8 +33,3 @@ group :test do
   gem 'minitest'
 end
 
-# START:production
-group :production do
-  gem 'jdbc-postgres'
-end
-# END:production
