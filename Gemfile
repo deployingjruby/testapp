@@ -33,3 +33,8 @@ group :test do
   gem 'minitest'
 end
 
+# START:production
+group :production do
+  gem 'pg'
+end
+# END:production
