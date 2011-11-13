@@ -7,5 +7,4 @@ class DeleteOldStatuses
   else
     puts "No statuses have been deleted."
   end
-
 end
