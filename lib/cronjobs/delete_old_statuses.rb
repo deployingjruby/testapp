@@ -1,6 +1,5 @@
 class DeleteOldStatuses 
-
-  status_ids = Status.find(:all, :conditions => ["created_at < ?", 24.hours.ago])
+  status_ids = Status.all(:conditions => ["created_at < ?", 24.hours.ago])
 
   if status_ids.size > 0
     Status.destroy(status_ids)
