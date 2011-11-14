@@ -6,3 +6,4 @@ tmp/
 public/assets/
 .idea/
 config/twitter_account.yml
+diagnostics.html
