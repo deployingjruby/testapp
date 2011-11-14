@@ -7,3 +7,4 @@ public/assets/
 .idea/
 config/twitter_account.yml
 *.war
+diagnostics.html
