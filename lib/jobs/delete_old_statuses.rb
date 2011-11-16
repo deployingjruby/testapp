@@ -1,6 +1,6 @@
 class DeleteOldStatuses
   def run
-    ids = Status.all(:conditions => ["created_at < ?", 24.hours.ago])
+    ids = Status.all(:conditions => ["created_at < ?", 30.days.ago])
 
     if ids.size > 0
       Status.destroy(ids)
