@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20111112225446) do
   create_table "statuses", :force => true do |t|
     t.string   "status_text"
     t.string   "creator"
+    t.string   "remote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
