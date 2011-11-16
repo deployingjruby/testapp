@@ -7,6 +7,18 @@ module TwitterUtil
     end
   end
 
+  def fetch_recent_tweets(num)
+    with_twitter_stream_config do |keywords|
+      search = Twitter::Search.new
+      results = search.
+          containing(keywords.join(" ")).
+          result_type("recent").
+          per_page(num).each {|t|}
+      search.clear
+      results
+    end
+  end
+
   def with_twitter_account
     cnfg = YAML.load_file("#{Rails.root}/config/twitter_account.yml")
     yield cnfg['username'], cnfg['password']

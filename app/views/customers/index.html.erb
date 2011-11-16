@@ -5,20 +5,12 @@
       <th>Date</th>
       <th>Status</th>
     </tr>
-    <tr>
-      <td>@coolguy</td>
-      <td>4/14/11</td>
-      <td>Such a great company</td>
-    </tr>
-    <tr>
-      <td>@coolguy</td>
-      <td>4/14/11</td>
-      <td>Such a great company</td>
-    </tr>
-    <tr>
-      <td>@coolguy</td>
-      <td>4/14/11</td>
-      <td>Such a great company</td>
-    </tr>
+    <% for s in @statuses %>
+        <tr>
+          <td><%= s[:creator] %></td>
+          <td><%= s[:created_at] %></td>
+          <td><%= s[:status_text] %></td>
+        </tr>
+    <% end %>
   </table>
 </div>
