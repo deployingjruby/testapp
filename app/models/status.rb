@@ -1,7 +1,7 @@
 class Status < ActiveRecord::Base
 
   def self.find_or_create_from(tweets)
-    tweets.map do |tweet|
+    r = tweets.map do |tweet|
       existing = Status.where(:remote_id => tweet.id_str).first
       existing.nil? ?
           Status.create(
@@ -12,5 +12,9 @@ class Status < ActiveRecord::Base
           ) :
           existing
     end
+
+    #Resque.enqueue(UpdateAnalytics)
+
+    r
   end
 end
