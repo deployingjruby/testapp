@@ -45,6 +45,7 @@ group :test do
   gem 'selenium-client', :require => 'selenium/client'
   gem 'selenium-webdriver'
   gem 'headless'
+  gem 'minitest'
 end
 
 # START:production
