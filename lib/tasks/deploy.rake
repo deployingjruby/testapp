@@ -49,12 +49,12 @@ namespace :deploy do
     # START:migrate
     with_ssh do |ssh|
       ssh.exec! "cd deploy; jar xf twitalytics.war"
-      ssh.exec("source .rvm/scripts/rvm
-                cd deploy/WEB-INF
+      ssh.exec("cd deploy/WEB-INF
+                export JRUBY_HOME=~/opt/jruby
                 export GEM_PATH=~/deploy/WEB-INF/gems
                 export RAILS_ENV=production
-                bundle install
-                bundle exec rake db:migrate"
+                $JRUBY_HOME/bin/jruby -S bundle install
+                $JRUBY_HOME/bin/jruby -S bundle exec rake db:migrate"
       ) do |ch, stream, data|
         print data
       end
