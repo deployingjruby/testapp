@@ -6,5 +6,7 @@ tmp/
 public/assets/
 .idea/
 config/twitter_account.yml
-*.war
+.vagrant
+*.box
+puppet/manifests/jruby*.tar.gz
 diagnostics.html
