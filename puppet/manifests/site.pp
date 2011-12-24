@@ -29,3 +29,7 @@ include apache2
 # START:include_postgres
 include postgres
 # END:include_postgres
+
+# START:include_tomcat
+include tomcat6
+# END:include_tomcat

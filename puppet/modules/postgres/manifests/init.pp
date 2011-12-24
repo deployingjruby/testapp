@@ -24,7 +24,7 @@ class postgres {
       \"select * from pg_user where usename='vagrant'\" | grep -c vagrant",
     require => Group['postgres']
   }
-  
+
   exec { "psql -c \"ALTER USER vagrant WITH PASSWORD 'Passw0rd'\"":
     user   => 'postgres',
     path   => $path,
