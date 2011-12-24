@@ -53,11 +53,3 @@ group :production do
   gem 'jdbc-postgres'
 end
 # END:production
-
-# START:deploy
-group :deploy do
-  gem "net-ssh", :require => "net/ssh"
-  gem "net-scp", :require => "net/scp"
-  gem "warbler"
-end
-# END:deploy
