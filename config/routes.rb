@@ -7,5 +7,7 @@ Twitalytics::Application.routes.draw do
 
   get "dashboard/index"
 
+  post "customers/retweet/:id", :controller => :customers, :action => :retweet, :as => :retweet
+
   root :to => "dashboard#index"
 end
