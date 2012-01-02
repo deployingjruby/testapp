@@ -17,4 +17,10 @@ class Status < ActiveRecord::Base
 
     r
   end
+
+  def retweet
+    sleep(10)
+    # Twitter.update("RT @#{creator}: {status_text}")
+    puts "Retweeting Status{id=#{id}}"
+  end
 end
