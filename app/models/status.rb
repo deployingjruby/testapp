@@ -13,7 +13,7 @@ class Status < ActiveRecord::Base
           existing
     end
 
-    #Resque.enqueue(UpdateAnalytics)
+    #Resque.enqueue(UpdateAnalytics, r.map(&:id))
 
     r
   end
