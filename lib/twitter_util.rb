@@ -1,12 +1,4 @@
 module TwitterUtil
-  def with_twitter_client
-    with_twitter_account do |username, password|
-      with_twitter_stream_config do |keywords|
-        yield TweetStream::Client.new(username, password), keywords
-      end
-    end
-  end
-
   def fetch_recent_tweets(num)
     with_twitter_stream_config do |keywords|
       search = Twitter::Search.new
@@ -15,6 +7,26 @@ module TwitterUtil
           result_type("recent").
           per_page(num).each {|t|}
       search.clear
+      results
+    end
+  end
+
+  def fetch_tweets_since(since_id)
+    with_twitter_stream_config do |keywords|
+      search = Twitter::Search.new
+      if since_id
+        results = search.
+            containing(keywords.join(" ")).
+            result_type("recent").
+            since_id(since_id).each {|t|}
+      else
+        results = search.
+            containing(keywords.join(" ")).
+            result_type("recent").
+            per_page(20).each {|t|}
+      end
+      search.clear
+      results.sort{|x,y| x["created_at"] <=> y["created_at"]}.each {|r| yield r }
       results
     end
   end
