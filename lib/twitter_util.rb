@@ -32,12 +32,12 @@ module TwitterUtil
   end
 
   def with_twitter_account
-    cnfg = YAML.load_file("#{Rails.root}/config/twitter_account.yml")
-    yield cnfg['username'], cnfg['password']
+    cnfg = YAML.load_file("#{Rails.root}/config/twitter.yml")
+    yield cnfg['username']
   end
 
   def with_twitter_stream_config
-    twitter_stream_config = YAML.load_file("#{Rails.root}/config/twitter_stream.yml")
-    yield twitter_stream_config['keywords']
+    cnfg = YAML.load_file("#{Rails.root}/config/twitter.yml")
+    yield cnfg['keywords']
   end
 end
