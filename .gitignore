@@ -10,3 +10,5 @@ diagnostics.html
 .vagrant
 *.box
 puppet/manifests/jruby*.tar.gz
+puppet/manifests/torquebox*.zip
+*.knob
