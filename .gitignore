@@ -6,9 +6,9 @@ tmp/
 public/assets/
 .idea/
 config/twitter_account.yml
-diagnostics.html
 .vagrant
 *.box
+diagnostics.html
 puppet/manifests/jruby*.tar.gz
 puppet/manifests/torquebox*.zip
 *.knob

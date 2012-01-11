@@ -1,9 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # START:sqlite
-gem 'sqlite3'
+if defined?(JRUBY_VERSION)
+  gem 'activerecord-jdbc-adapter', :require => false
+  gem 'jdbc-sqlite3', :require => false
+else
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
 # END:sqlite
 
 # Gems used only for assets and not required
@@ -19,6 +24,17 @@ gem "json"
 gem "tweetstream", "1.0.4"
 gem 'twitter', '~> 1.7.2'
 
+# START:get_back
+platform :jruby do
+  gem "get_back"
+  # END:get_back
+  # START:jruby_openssl
+  gem "jruby-openssl"
+  # END:jruby_openssl
+  # START:get_back
+end
+# END:get_back
+
 group :test do
   gem 'turn', :require => false
   gem 'rspec-rails'
@@ -26,7 +42,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'execjs'
-  gem 'therubyracer'
   gem 'selenium-client', :require => 'selenium/client'
   gem 'selenium-webdriver'
   gem 'headless'
@@ -35,6 +50,6 @@ end
 
 # START:production
 group :production do
-  gem 'pg'
+  gem 'jdbc-postgres'
 end
 # END:production
