@@ -2,15 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
-# START:sqlite
-if defined?(JRUBY_VERSION)
-  gem 'activerecord-jdbc-adapter', :require => false
-  gem 'jdbc-sqlite3', :require => false
-else
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-end
-# END:sqlite
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -48,8 +39,16 @@ group :test do
   gem 'minitest'
 end
 
+gem 'activerecord-jdbc-adapter'
+
 # START:production
 group :production do
   gem 'jdbc-postgres'
 end
 # END:production
+
+group :development, :test do
+  # START:sqlite
+  gem 'jdbc-sqlite3'
+  # END:sqlite
+end
