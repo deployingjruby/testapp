@@ -8,3 +8,8 @@ public/assets/
 config/twitter_account.yml
 *.war
 diagnostics.html
+.vagrant
+puppet/manifests/jruby*.tar.gz
+puppet/manifests/torquebox*.zip
+*.knob
+*.war
