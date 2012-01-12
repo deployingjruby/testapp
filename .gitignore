@@ -11,4 +11,5 @@ config/twitter_account.yml
 puppet/manifests/jruby*.tar.gz
 puppet/manifests/torquebox*.zip
 *.knob
+*.war
 diagnostics.html
