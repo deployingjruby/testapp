@@ -4,7 +4,7 @@ Bundler.require(:deploy)
 # END:require
 
 # START:with_ssh
-SSH_KEY = "#{ENV["GEM_HOME"]}/gems/vagrant-0.8.7/keys/vagrant"
+SSH_KEY = "#{ENV["GEM_HOME"]}/gems/vagrant-0.8.10/keys/vagrant"
 
 def with_ssh
   Net::SSH.start("localhost", "vagrant", {
