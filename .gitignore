@@ -9,4 +9,6 @@ config/twitter_account.yml
 .vagrant
 *.box
 puppet/manifests/jruby*.tar.gz
+puppet/manifests/torquebox*.zip
+*.knob
 diagnostics.html
