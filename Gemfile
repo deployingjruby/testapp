@@ -40,14 +40,13 @@ group :test do
 end
 
 # START:db_driver
+gem 'activerecord-jdbc-adapter', :require => false
+
 group :production do
   gem 'jdbc-postgres'
 end
-# END:production
 
 group :development, :test do
-  # START:sqlite
   gem 'jdbc-sqlite3'
-  # END:sqlite
 end
 # END:db_driver
