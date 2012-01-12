@@ -29,6 +29,7 @@ group :test do
   gem 'minitest'
 end
 
+# START:db_driver
 group :production do
   # START:pg
   gem 'pg'
@@ -40,3 +41,4 @@ group :development, :test do
   gem 'sqlite3'
   # END:sqlite
 end
+# END:db_driver
