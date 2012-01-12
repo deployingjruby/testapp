@@ -1,0 +1,1 @@
+ssh -i ~/.rvm/gems/jruby-1.6.5/gems/vagrant-0.8.10/keys/vagrant -p 2222 vagrant@localhost
