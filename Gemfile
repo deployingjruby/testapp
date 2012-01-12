@@ -48,11 +48,19 @@ group :test do
   gem 'minitest'
 end
 
-# START:production
+# START:db_drivers
 group :production do
+  # START:postgres
   gem 'jdbc-postgres'
+  # END:postgres
 end
-# END:production
+
+group :development, :test do
+  # START:sqlite
+  gem 'jdbc-sqlite3'
+  # END:sqlite
+end
+# END:db_drivers
 
 # START:deploy
 group :deploy do
