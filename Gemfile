@@ -22,7 +22,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'execjs'
-  gem 'therubyracer'
   gem 'selenium-client', :require => 'selenium/client'
   gem 'selenium-webdriver'
   gem 'headless'
