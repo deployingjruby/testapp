@@ -39,9 +39,7 @@ group :test do
   gem 'minitest'
 end
 
-gem 'activerecord-jdbc-adapter'
-
-# START:production
+# START:db_driver
 group :production do
   gem 'jdbc-postgres'
 end
@@ -52,3 +50,4 @@ group :development, :test do
   gem 'jdbc-sqlite3'
   # END:sqlite
 end
+# END:db_driver

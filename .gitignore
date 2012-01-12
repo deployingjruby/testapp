@@ -12,3 +12,4 @@ diagnostics.html
 puppet/manifests/jruby*.tar.gz
 puppet/manifests/torquebox*.zip
 *.knob
+*.war
