@@ -2,10 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
-# START:sqlite
-gem 'sqlite3'
-# END:sqlite
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -33,8 +29,14 @@ group :test do
   gem 'minitest'
 end
 
-# START:production
 group :production do
+  # START:pg
   gem 'pg'
+  # END:pg
 end
-# END:production
+
+group :development, :test do
+  # START:sqlite
+  gem 'sqlite3'
+  # END:sqlite
+end
